@@ -1,5 +1,6 @@
 <template>
   <div class="hello">
+    <Header></Header>
     <h1>{{ msg }}</h1>
     <h2>Essential Links</h2>
     <ul>
@@ -32,13 +33,14 @@
 
 <script>
 import axios from 'axios'
+import Header from './Header'
 
 export default {
   name: 'hello',
   data () {
     return {
       msg: 'Welcome to Your Vue.js App',
-      testData: {}
+      testData: { 'ada': '133' }
     }
   },
   mounted () {
@@ -51,35 +53,36 @@ export default {
       .catch((error) => {
         console.log(error)
       })
-  }
+  },
+  components: { Header }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h1, h2 {
-  font-weight: normal;
-}
+  h1, h2 {
+    font-weight: normal;
+  }
 
-ul {
-  list-style-type: none;
-  padding: 0;
-}
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
 
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
+  li {
+    display: inline-block;
+    margin: 0 10px;
+  }
 
-a {
-  color: #42b983;
-}
+  a {
+    color: #42b983;
+  }
 
-.wrapper{
-  padding: 20px 40px;
-  border: 1px solid #c0c0c0;
-  max-width: 400px;
-  margin: 0 auto;
-  background: orange;
-}
+  .wrapper {
+    padding: 20px 40px;
+    border: 1px solid #c0c0c0;
+    max-width: 400px;
+    margin: 0 auto;
+    background: orange;
+  }
 </style>
