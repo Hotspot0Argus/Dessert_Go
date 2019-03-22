@@ -8,4 +8,4 @@ def index(request):
 
 @csrf_exempt
 def test_api(request):
-    return JsonResponse({'foo': 'bar'})
+    return JsonResponse({'foo': 'baraaaa'})
