@@ -32,30 +32,28 @@
 </template>
 
 <script>
-import axios from 'axios'
-import Header from './Header'
+  import axios from 'axios'
+  import Header from './Header'
 
-export default {
-  name: 'hello',
-  data () {
-    return {
-      msg: 'Welcome to Your Vue.js App',
-      testData: { 'ada': '133' }
-    }
-  },
-  mounted () {
-    console.log('mounted')
-    axios.get('/api/test')
-      .then((response) => {
-        // console.log(response)
-        this.testData = response.data
-      })
-      .catch((error) => {
-        console.log(error)
-      })
-  },
-  components: { Header }
-}
+  export default {
+    name: 'hello',
+    data () {
+      return {
+        msg: 'Welcome to Your Vue.js App',
+        testData: {'ada': '133'}
+      }
+    },
+    mounted () {
+      axios.get('/api/test')
+        .then((response) => {
+          this.testData = response.data
+        })
+        .catch((error) => {
+          console.log(error)
+        })
+    },
+    components: {Header}
+  }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
