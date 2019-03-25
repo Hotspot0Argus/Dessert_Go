@@ -19,19 +19,16 @@
 </template>
 
 <script>
-  import axios from 'axios'
 
   export default {
     methods: {
-      login () {
-        this.$axios.get('/api/test')
-          .then((response) => {
-            console.log('1111')
-            this.testData = response.data
-          })
-          .catch((error) => {
-            console.log(error)
-          })
+      async login () {
+        try {
+          const result = await this.$api.get('/api/test')
+          console.log(result)
+        } catch (e) {
+          console.log(e)
+        }
       }
     }
   }
