@@ -16,7 +16,8 @@
     "axios": "^0.16.2",
     "element-ui": "^2.6.1",
     "eslint-plugin-vuefix": "^0.2.1",
-    "vue": "^2.2.2",
+    "vue": "^2.5.17",
+    "vue-async-computed": "^3.6.1",
     "vue-router": "^2.2.0"
   },
   "devDependencies": {

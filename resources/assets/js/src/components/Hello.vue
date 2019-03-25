@@ -1,5 +1,5 @@
 <template>
-  <div class="hello">
+  <div class="hello" v-if="data2">
     <Header></Header>
     <h1>{{ msg }}</h1>
     <h2>Essential Links</h2>
@@ -24,7 +24,8 @@
 
       <div class="wrapper">
         <p>/api/test</p>
-        <span>foo</span>: <span>{{ testData.foo }}</span>
+        <span>foo</span>: <span>{{ data2.foo }}</span>
+        <span>foo</span>: <span>{{ data3 }}</span>
       </div>
     </div>
 
@@ -32,7 +33,6 @@
 </template>
 
 <script>
-  import axios from 'axios'
   import Header from './Header'
 
   export default {
@@ -40,19 +40,21 @@
     data () {
       return {
         msg: 'Welcome to Your Vue.js App',
-        testData: {'ada': '133'}
+        testData: ''
       }
     },
-    mounted () {
-      axios.get('/api/test')
-        .then((response) => {
-          this.testData = response.data
-        })
-        .catch((error) => {
-          console.log(error)
-        })
+    // 异步加载数据
+    asyncComputed: {
+      data2 () {
+        return this.$api.get('/api/test')
+      },
+      data3 () {
+        return '11'
+      }
     },
-    components: {Header}
+    components: {
+      Header
+    }
   }
 </script>
 
