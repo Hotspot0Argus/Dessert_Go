@@ -83,4 +83,6 @@ USE_L10N = True
 
 USE_TZ = True
 
+CSRF_COOKIE_NAME = "csrftoken"
+
 STATIC_URL = '/static/'

@@ -7,5 +7,6 @@ urlpatterns = [
 
     # Test api
     path('api/test', views.test_api, name='test_api'),
+    path('api/post', views.post_api, name='post_api')
 ]
 
