@@ -1,7 +1,10 @@
 import axios from 'axios'
+const qs = require('qs')
+
+axios.defaults.xsrfCookieName = 'csrftoken'
+axios.defaults.xsrfHeaderName = 'X-CSRFToken'
 
 const host = 'http://localhost:8080'
-const qs = require('qs')
 const $api = {
   async get (url, data) {
     try {
@@ -20,7 +23,11 @@ const $api = {
   },
   async post (url, data) {
     try {
-      let res = await axios.post(host + url, qs.stringify(data))
+      let res = await axios.post(host + url, qs.stringify(data), {
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        }
+      })
       res = res.data
       return new Promise((resolve, reject) => {
         if (res.code === 0) {
