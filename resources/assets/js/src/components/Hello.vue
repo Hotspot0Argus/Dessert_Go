@@ -46,7 +46,7 @@
     // 异步加载数据
     asyncComputed: {
       data2 () {
-        return this.$api.get('/api/test')
+        return this.$api.get('/menu/test')
       },
       data3 () {
         return '11'
