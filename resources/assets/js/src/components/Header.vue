@@ -24,7 +24,7 @@
     methods: {
       async login () {
         try {
-          const result = await this.$api.post('/api/post', {'name': '123'})
+          const result = await this.$api.post('/post', {'name': '123'})
           console.log(result)
         } catch (e) {
           console.log(e)
