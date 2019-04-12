@@ -30,6 +30,7 @@ div#head{
 	width:800px;
 	height:70px;
 	background-image:url(../assets/back_cake.jpg);
+	border-radius:15px;
 }
 
 h1#text1{
