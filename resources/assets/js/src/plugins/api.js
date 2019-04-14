@@ -4,7 +4,7 @@ const qs = require('qs')
 axios.defaults.xsrfCookieName = 'csrftoken'
 axios.defaults.xsrfHeaderName = 'X-CSRFToken'
 
-const host = 'http://localhost:8080/api'
+const host = 'http://localhost:8081/api'
 const $api = {
   async get (url, data) {
     try {

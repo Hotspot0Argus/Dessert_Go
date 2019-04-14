@@ -2,11 +2,13 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import ElementUI from 'element-ui'
-import { $api } from './api'
+import { $api } from './plugins/api'
+import SessionPlugin from './plugins/session'
 import AsyncComputed from 'vue-async-computed'
-import 'element-ui/lib/theme-chalk/index.css'
+import '../../../../theme/index.css'
 
 Vue.use(ElementUI)
+Vue.use(SessionPlugin)
 Vue.use(AsyncComputed)
 Vue.prototype.$api = $api
 
