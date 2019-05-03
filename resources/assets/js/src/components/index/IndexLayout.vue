@@ -2,12 +2,7 @@
   <div>
     <el-header style="padding: 0;z-index: 1000">
       <el-menu
-        :default-active="activeIndex2"
-        mode="horizontal"
-        @select="handleSelect"
-        background-color="#545c64"
-        text-color="#fff"
-        active-text-color="#ffd04b">
+        mode="horizontal">
         <el-row type="flex" justify="end">
           <el-menu-item index="1">处理中心</el-menu-item>
           <el-submenu index="2">

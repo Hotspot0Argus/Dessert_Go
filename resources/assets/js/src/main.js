@@ -6,6 +6,8 @@ import { $api } from './plugins/api'
 import SessionPlugin from './plugins/session'
 import AsyncComputed from 'vue-async-computed'
 import '../../../../theme/index.css'
+import 'font-awesome/scss/font-awesome.scss'
+import '../../../../theme/main.css'
 
 Vue.use(ElementUI)
 Vue.use(SessionPlugin)
