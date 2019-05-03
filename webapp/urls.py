@@ -1,13 +1,12 @@
 from django.conf.urls import include
 from django.urls import path
-from . import views
+from webapp.controller import menus
+
 
 urlpatterns = [
-    path('$', views.index, name='index'),
-
     # Test api
-    path('test', views.test_api, name='test_api'),
-    path('post', views.post_api, name='post_api'),
-    path('menu/', include('webapp.route.menus'), name='post_api')
+    path('test', menus.test_api, name='test_api'),
+    path('post', menus.post_api, name='post_api'),
+    path('menu/', include('webapp.routes.menus'), name='post_api')
 ]
 
