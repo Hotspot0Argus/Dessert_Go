@@ -7,8 +7,8 @@
   "scripts": {
     "dev": "node resources/assets/js/build/dev-server.js",
     "build": "node resources/assets/js/build/build.js",
-    "unit": "cross-env BABEL_ENV=test karma start test/unit/karma.conf.js --single-run",
-    "e2e": "node test/e2e/runner.js",
+    "unit": "cross-env BABEL_ENV=test karma start resources/assets/js/test/unit/karma.conf.js --single-run",
+    "e2e": "node resources/assets/js/test/e2e/runner.js",
     "test": "npm run unit && npm run e2e",
     "lint": "eslint --ext .js,.vue src test/unit/specs test/e2e/specs"
   },
@@ -33,7 +33,7 @@
     "babel-register": "^6.22.0",
     "chai": "^3.5.0",
     "chalk": "^1.1.3",
-    "chromedriver": "^2.27.2",
+    "chromedriver": "^2.46.0",
     "connect-history-api-fallback": "^1.3.0",
     "copy-webpack-plugin": "^4.0.1",
     "cross-env": "^3.1.4",
