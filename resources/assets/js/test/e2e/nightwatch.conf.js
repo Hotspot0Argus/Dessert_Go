@@ -3,9 +3,9 @@ var config = require('../../config')
 
 // http://nightwatchjs.org/getingstarted#settings-file
 module.exports = {
-  src_folders: ['test/e2e/specs'],
-  output_folder: 'test/e2e/reports',
-  custom_assertions_path: ['test/e2e/custom-assertions'],
+  src_folders: ['resources/assets/js/test/e2e/specs'],
+  output_folder: 'resources/assets/js/test/e2e/reports',
+  custom_assertions_path: ['resources/assets/js/test/e2e/custom-assertions'],
 
   selenium: {
     start_process: true,
