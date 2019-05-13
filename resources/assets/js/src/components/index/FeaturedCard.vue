@@ -1,16 +1,19 @@
 <template>
   <div class="is-padding-less">
     <el-card :body-style="{ padding: '0px' }" shadow="never" class="box-card is-padding-less function-menu is-hoverable"
-             @click.native="$router.push({name: 'system'})">
-      <div class="title"><i class="fa fa-square fa-fw is-text-danger"></i>系统管理</div>
-      <div class="is-footer">123</div>
+             @click.native="$router.push({name: routeName})">
+      <div class="title"><i class="fa fa-square fa-fw"
+                            :class="{'is-text-danger':routeName==='orders','is-text-warning':routeName==='menus','is-text-info':routeName==='employees','is-text-primary':routeName==='logs','is-text-gain':routeName==='system'}"></i>{{category}}
+      </div>
+      <div class="is-footer is-text-small">{{detail}}</div>
     </el-card>
-
   </div>
 </template>
 
 <script>
-  export default {}
+  export default {
+    props: ['category', 'routeName', 'detail']
+  }
 </script>
 
 <style scoped>
@@ -22,10 +25,11 @@
   }
 
   .is-footer {
-    height: 2.5rem;
+    height: 1.5rem;
     background-color: #E8EBF0;
     position: relative;
-    top: 6rem;
+    text-align: center;
+    top: 7rem;
   }
 
   .box-card {
