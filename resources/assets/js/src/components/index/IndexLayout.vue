@@ -17,8 +17,8 @@
               <el-menu-item index="2-4-3">选项3</el-menu-item>
             </el-submenu>
           </el-submenu>
-          <el-menu-item index="3">消息中心</el-menu-item>
-          <el-menu-item index="4"><a href="https://www.ele.me" target="_blank">登陆</a></el-menu-item>
+          <el-menu-item index="3" @click="testSession()">消息中心</el-menu-item>
+          <el-menu-item index="4"><a target="_blank">登陆</a></el-menu-item>
         </el-row>
       </el-menu>
     </el-header>
@@ -39,7 +39,14 @@
 </template>
 
 <script>
-  export default {}
+  export default {
+    methods: {
+      testSession () {
+        this.$session.set('token', '123')
+        console.log(this.$session.get('token'))
+      }
+    }
+  }
 </script>
 
 <style scoped>

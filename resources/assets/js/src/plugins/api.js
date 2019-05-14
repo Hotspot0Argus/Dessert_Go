@@ -1,4 +1,5 @@
 import axios from 'axios'
+
 const qs = require('qs')
 
 axios.defaults.xsrfCookieName = 'csrftoken'
@@ -25,7 +26,8 @@ const $api = {
     try {
       let res = await axios.post(host + url, qs.stringify(data), {
         headers: {
-          'Content-Type': 'application/x-www-form-urlencoded'
+          'Content-Type': 'application/x-www-form-urlencoded',
+          'Session': '123'
         }
       })
       res = res.data
