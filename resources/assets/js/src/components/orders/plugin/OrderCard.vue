@@ -3,7 +3,8 @@
     <el-card class="box-card">
       <div slot="header" class="clearfix">
         <span>桌号{{orderInfo.tableId}}</span>
-        <el-button style="float: right; padding: 3px 0" type="text">查看和编辑</el-button>
+        <el-button style="float: right; padding: 3px 0" type="text" @click="$router.push({name:'orders:order'})">查看和编辑
+        </el-button>
       </div>
       <el-table
         :data="orderInfo.menuItems"
