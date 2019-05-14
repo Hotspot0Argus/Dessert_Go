@@ -7,34 +7,23 @@
       <br>
       <el-row :gutter="18">
         <el-col :span="16">
-          <el-card shadow="never" class="box-card function-menu is-hoverable"
-                   @click.native="$router.push({name: 'orders'})">
-            <div class="title"><i class="fa fa-square fa-fw is-text-danger"></i>订单管理</div>
-          </el-card>
+          <featured-card category="订单管理" routeName="orders" detail="管理当前所有活动订单"></featured-card>
+
         </el-col>
         <el-col :span="8">
-          <el-card shadow="never" class="box-card function-menu is-hoverable"
-                   @click.native="$router.push({name: 'menus'})">
-            <div class="title">菜单管理</div>
-          </el-card>
+          <featured-card category="菜单管理" routeName="menus" detail="增加和修改甜品菜单"></featured-card>
         </el-col>
       </el-row>
       <br>
       <el-row :gutter="18">
         <el-col :span="8">
-          <el-card shadow="never" class="box-card function-menu is-hoverable"
-                   @click.native="$router.push({name: 'employees'})">
-            <div class="title item">员工管理</div>
-          </el-card>
+          <featured-card category="员工管理" routeName="employees" detail="员工管理"></featured-card>
         </el-col>
         <el-col :span="8">
-          <el-card shadow="never" class="box-card function-menu is-hoverable"
-                   @click.native="$router.push({name: 'logs'})">
-            <div class="title">日志管理</div>
-          </el-card>
+          <featured-card category="日志管理" routeName="logs" detail="账单系统"></featured-card>
         </el-col>
         <el-col :span="8">
-          <featured-card></featured-card>
+          <featured-card category="系统管理" routeName="system" detail="系统版本信息"></featured-card>
         </el-col>
       </el-row>
       <br>
@@ -59,21 +48,13 @@
         }
       }
     },
-    components: { FeaturedCard
+    components: {
+      FeaturedCard
     }
   }
 </script>
 
 <style scoped>
-  .close-top {
-    margin-top: -3px;
-  }
-
-  .media-content {
-    width: 75%;
-    padding-left: 12.5%;
-  }
-
   .function-menu {
     height: 13rem;
     border-width: 1px;

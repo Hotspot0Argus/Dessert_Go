@@ -1,15 +1,17 @@
-from django.shortcuts import render
-from django.views.decorators.csrf import csrf_exempt
-from django.http import JsonResponse
-from webapp.Proxy import menus
+from webapp.controller.common import header_checker, response, response_code
 
 
-def test_api(request):
-    return JsonResponse({'foo': 'bar'})
+def create_item(request):
+    return response(response_code['OK'])
 
 
-def post_api(request):
-    print('11', request.POST.get('name'))
-    menus_info = menus.create(request.POST.get('name'))
-    print(menus_info)
-    return JsonResponse(menus_info)
+def get_menus(request):
+    return response(response_code['OK'])
+
+
+def modify_menu_item(request):
+    return response(response_code['OK'])
+
+
+def remove_menu_item(request):
+    return response(response_code['OK'])

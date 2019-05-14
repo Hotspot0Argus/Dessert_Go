@@ -28,7 +28,7 @@
       <el-row type="flex" class="row-bg" justify="center">
         <el-col :span="36">
           <div class="grid-content bg-purple-light">
-          互联网食品信息服务资格证书:(北理工)-经营性-2019-0510 | 北理工工商行政管理 Copyright ©2019-2029 北京理工假装是工程师有限公司, All Rights Reserved.           
+          互联网食品信息服务资格证书:(北理工)-经营性-2019-0510 | 北理工工商行政管理 Copyright ©2019-2029 北京理工假装是工程师有限公司, All Rights Reserved.
           </div>
         </el-col>
       </el-row>
