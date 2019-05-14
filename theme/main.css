@@ -241,10 +241,39 @@
   color: #F56C6C;
 }
 
+.is-text-warning {
+  color: orange;
+}
+
+.is-text-info {
+  color: darkblue;
+}
+
+.is-text-gain {
+  color: gainsboro;
+}
+
+.is-text-primary {
+  color: #0DD1B2;
+}
+
+.close-top {
+  margin-top: -3px;
+}
+
+.media-content {
+  width: 75%;
+  padding-left: 12.5%;
+}
+
 .box-card.is-hoverable:hover {
   transform: translateY(-3px);
   box-shadow: 0 7px 28px rgba(0, 0, 0, 0.28);
   border-width: 0;
+}
+
+.is-text-small {
+  font-size: 12px;
 }
 
 .title {
@@ -257,4 +286,203 @@
 
 .is-margin-less {
   margin: 0
+}
+
+.flex-table-wrapper {
+  overflow: auto;
+}
+
+.flex-table {
+  /*border-top: 1px solid #dddddd;*/
+  font-size: 13px;
+  overflow: auto;
+  position: relative;
+  /*padding-bottom: 10px;*/
+  background: #E8EBF0;
+}
+
+.flex-table-head-wrapper:not(.auto-height),
+.flex-table-body-wrapper:not(.auto-height) {
+  overflow: hidden;
+  overflow-y: scroll;
+  width: 100%;
+}
+
+.flex-table-body-wrapper:not(.auto-height) {
+  overflow-x: auto;
+  overflow-y: scroll;
+}
+
+.flex-table-head .flex-table-cell {
+  font-weight: bold;
+  white-space: normal;
+}
+
+.flex-table-body {
+  /*display: inline-block;*/
+}
+
+.flex-table .input.is-small, .textarea.is-small {
+  height: 1.8em;
+}
+
+.flex-table-row {
+  display: inline-flex;
+  flex-wrap: nowrap;
+  min-width: 100%;
+  border-bottom: 1px solid #dddddd;
+  background: white;
+}
+
+.flex-table-row:hover {
+  background: #f7fbfd;
+}
+
+.flex-table-row:focus {
+  outline: none;
+}
+
+.flex-table-cell-wrapper {
+  display: inline-flex;
+  align-items: center;
+  height: 48px;
+  flex-grow: 1;
+  flex-shrink: 0;
+}
+
+.flex-table-cell-wrapper:not(:last-child) {
+  border-right: 1px dashed #dddddd;
+}
+
+.flex-table-head .flex-table-cell-wrapper {
+  min-height: 4em;
+  height: auto;
+  background: #E8EBF0;
+}
+
+.flex-table-cell-wrapper.oneline {
+  min-width: 0;
+}
+
+.flex-table-cell-wrapper.fixwidth {
+  flex-grow: 0;
+}
+
+.flex-table-cell-wrapper.oneline .flex-table-cell {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.flex-table-cell {
+  padding: 6px 10px;
+  position: relative;
+}
+
+.flex-table .selection {
+  position: relative;
+  display: block;
+  width: 22px;
+  height: 22px;
+  border: 1px solid #BBBBBB;
+  transition: all .3s;
+  margin: 0 6px;
+  border-radius: 20px;
+}
+
+.flex-table-row.is-active .selection {
+  background: #0dd1b2;
+  border-color: #0dd1b2;
+}
+
+.flex-table-row.is-active .selection:after {
+  transform: rotate(-45deg);
+  border-color: white;
+}
+
+.flex-table-row .selection:after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: 12px;
+  height: 8px;
+  border: 2px solid transparent;
+  border-top: none;
+  border-right: none;
+  transform: rotate(0deg);
+  transition: all .3s;
+}
+
+.flex-table-item,
+.flex-table-header {
+  margin: 0;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1), 0 0 1px rgba(10, 10, 10, 0.3);
+  background: white;
+  padding: 0.75em 1.5em;
+  position: relative;
+  color: #777777;
+  overflow: hidden;
+  font-size: 0.8rem;
+}
+
+.flex-table-item .column.center {
+  justify-content: center;
+}
+
+.flex-table-item:nth-child(even) {
+  /*background: #f7fbfd;*/
+}
+
+.flex-table-item:hover {
+  background: #f7fbfd;
+}
+
+.flex-table-item .column:not(:first-child),
+.flex-table-header .column:not(:first-child) {
+  border-left: 1px solid #f0f0f0;
+}
+
+.flex-table-item.is-active {
+  background: #d4e9f1;
+}
+
+.flex-table.is-borderless .flex-table-item .column:not(:first-child) {
+  border-left: none;
+}
+
+.flex-table-header {
+  padding: 1em 1.5em;
+  font-weight: bold;
+  color: #363636;
+  /*font-size: 1rem;*/
+  background: #E8EBF0;
+}
+
+.flex-table-header:hover {
+  background: #E8EBF0;
+}
+
+.flex-table-item .column {
+  flex-wrap: wrap;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.flex-table-item .column.centered {
+  justify-content: center;
+}
+
+.flex-table-draggable {
+  color: #CCCCCC;
+  position: absolute;
+  font-size: 1.25rem;
+  width: 2rem;
+  text-align: center;
+  left: -.5rem;
+  top: -.6rem;
+  cursor: move;
+  cursor: grab;
 }

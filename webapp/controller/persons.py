@@ -1,17 +1,21 @@
 from webapp.controller.common import header_checker, response, response_code
 
 
-def create_item(request):
+def login(request):
     return response(response_code['OK'])
 
 
-def get_menus(request):
+def get_self_info(request):
     return response(response_code['OK'])
 
 
-def modify_menu_item(request):
+def set_self_info(request):
     return response(response_code['OK'])
 
 
-def remove_menu_item(request):
+def get_all_info(request):
+    return response(response_code['OK'])
+
+
+def change_password(request):
     return response(response_code['OK'])

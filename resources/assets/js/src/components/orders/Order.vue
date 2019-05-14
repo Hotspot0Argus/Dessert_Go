@@ -1,29 +1,12 @@
 <template>
   <div>
     <div class=" media-content">
-      <h1 class="">所有订单</h1>
+      <h1 class="">订单</h1>
       <br>
       <el-row :gutter="20" class="is-multiple">
         <el-col :span="8">
           <order-card :orderInfo="orderInfo"></order-card>
         </el-col>
-        <el-col :span="8">
-          <order-card :orderInfo="orderInfo"></order-card>
-
-        </el-col>
-        <el-col :span="8">
-          <order-card :orderInfo="orderInfo"></order-card>
-        </el-col>
-        <el-col :span="8">
-          <order-card :orderInfo="orderInfo"></order-card>
-        </el-col>
-        <el-col :span="8">
-          <order-card :orderInfo="orderInfo"></order-card>
-        </el-col>
-        <el-col :span="8">
-          <order-card :orderInfo="orderInfo"></order-card>
-        </el-col>
-
       </el-row>
       <br>
       <br>
