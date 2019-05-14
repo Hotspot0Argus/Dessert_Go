@@ -13,3 +13,5 @@ class Person(models.Model):
     class Meta:
         app_label = 'webapp'
         db_table = 'menu'
+
+

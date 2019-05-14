@@ -1,19 +1,14 @@
 from django.http import JsonResponse
 import json
-from jwt import (
-    JWT,
-    jwk_from_dict,
-    jwk_from_pem,
-)
+import jwt
 
 
 def header_checker(req):
     session = req.META.get("HTTP_SESSION")
     if session:
-        jwt = JWT()
         # token = jwt.encode(payload, 'secret', algorithm='HS256')
         try:
-            jwt.verify(session, 'gjwAq;JwqSDergEOkg')
+            jwt.decode(session, 'gjwAq;JwqSDergEOkg')
         except:
             return False
         # 获取user 判断session是否正确

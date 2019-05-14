@@ -1,5 +1,5 @@
 from webapp.controller.common import header_checker, response, response_code
-from jwt import JWT
+import jwt
 
 
 def login(request):
@@ -7,7 +7,6 @@ def login(request):
     worker_id = req.get('worker_id')
     password = req.get('password')
     # 数据库处理
-    jwt = JWT()
     payload = {
         'worker_id': '201902138',
         'position': 1,
