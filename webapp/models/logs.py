@@ -10,6 +10,6 @@ class Log(models.Model):
 
     class Meta:
         app_label = 'webapp'
-        db_table = 'Log'
+        db_table = 'logs'
 
     #     函数未写

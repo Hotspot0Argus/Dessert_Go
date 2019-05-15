@@ -12,12 +12,12 @@ class Person(models.Model):
 
     class Meta:
         app_label = 'webapp'
-        db_table = 'Person'
-
+        db_table = 'person'
 
     def findBy(self):
-     user=Person.objects.get(self)
-     return user
+        user = Person.objects.get(self)
+        return user
 
-
-
+    @classmethod
+    def check_worker_id_and_person_id(cls, person_id, worker_id):
+        return True
