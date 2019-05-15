@@ -13,7 +13,7 @@ def login(request):
         'position': 1,
     }
     token = jwt.encode(payload, 'gjwAq;JwqSDergEOkg', algorithm='HS256')
-    return response(response_code['OK'], {'token': str(token, encoding="utf-8")})
+    return response(response_code['OK'], {'token': str(token, encoding="utf-8"), 'info': payload})
 
 
 def verify(request):

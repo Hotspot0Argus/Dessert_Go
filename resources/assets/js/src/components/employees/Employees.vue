@@ -10,47 +10,6 @@
     </div>
     <br>
     <div>
-      <flex-table
-        :dataset="tableData"
-        height="60vh">
-        <flex-table-column type="selection"></flex-table-column>
-        <flex-table-column
-          prop="name"
-          width="100"
-          align="center">
-          <template slot="header">
-            <a class="problem-name single-line">
-              <span>
-                <i class="fa fa-long-arrow-down fa-fw"></i>姓名</span>
-            </a>
-          </template>
-        </flex-table-column>
-
-        <flex-table-column
-          prop="address"
-          label="住址"
-          align="center"
-          width="560">
-          <template slot="header">
-            <a class="problem-name single-line">
-              <span @click="changeOrder('student_id')">
-                <i class="fa fa-long-arrow-down fa-fw"></i>住址</span>
-            </a>
-          </template>
-        </flex-table-column>
-        <flex-table-column
-          prop="address"
-          label="住址"
-          align="center"
-          width="300">
-          <template slot="header">
-            <a class="problem-name single-line">
-              <span @click="changeOrder('student_id')">
-                <i class="fa fa-long-arrow-down fa-fw"></i>住址</span>
-            </a>
-          </template>
-        </flex-table-column>
-      </flex-table>
     </div>
   </div>
 </template>
