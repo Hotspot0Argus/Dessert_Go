@@ -14,4 +14,6 @@ class Person(models.Model):
         app_label = 'webapp'
         db_table = 'menu'
 
-
+    @classmethod
+    def check_worker_id_and_person_id(cls, person_id, worker_id):
+        return True

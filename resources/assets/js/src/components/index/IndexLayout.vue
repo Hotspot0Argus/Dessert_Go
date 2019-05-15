@@ -73,32 +73,36 @@
     asyncComputed: {
       isLogin () {
         const token = this.$session.get('token')
-        console.log('1')
+        this.$api.setToken(token)
         if (token) {
-          console.log('2')
-          // try {
-          //   this.$api.get('/session/verify', {'token': token})
-          //   return true
-          // } catch (e) {
-          //   return false
-          // }
-          this.rcToken = '123'
+          try {
+            this.$api.get('/session/verify', {'token': token})
+            this.rcToken = token
+          } catch (e) {
+            this.$api.setToken('')
+          }
         }
       }
     },
     methods: {
       async login () {
-        // const token = await this.$api.post('/session/login', {
-        //   worker_id: this.loginInfo.workerId,
-        //   password: this.loginInfo.password
-        // })
-        this.$session.set('token', 'token')
-        this.rcToken = '123'
+        const res = await this.$api.post('/session/login', {
+          worker_id: this.loginInfo.workerId,
+          password: this.loginInfo.password
+        })
+        this.$session.set('token', res.token)
+        this.$api.setToken(res.token)
+        this.rcToken = res.token
         this.ui.loginModal = false
       },
-      logout () {
-        this.$session.clear()
-        this.rcToken = ''
+      async logout () {
+        try {
+          // await this.$api.get('/session/logout')
+          this.$session.clear()
+          this.$api.setToken('')
+          this.rcToken = ''
+        } catch (e) {
+        }
       }
     }
   }
