@@ -12,4 +12,12 @@ class Person(models.Model):
 
     class Meta:
         app_label = 'webapp'
-        db_table = 'menu'
+        db_table = 'Person'
+
+
+    def findBy(self):
+     user=Person.objects.get(self)
+     return user
+
+
+
