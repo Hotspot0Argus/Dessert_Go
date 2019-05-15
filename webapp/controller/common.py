@@ -1,28 +1,4 @@
 from django.http import JsonResponse
-<<<<<<< HEAD
-import json
-# from jwt import (
-#     JWT,
-#     jwk_from_dict,
-#     jwk_from_pem,
-# )
-
-
-def header_checker(req):
-    # session = req.META.get("HTTP_SESSION")
-    # if session:
-    #     jwt = JWT()
-    #     # token = jwt.encode(payload, 'secret', algorithm='HS256')
-    #     try:
-    #         jwt.verify(session, 'gjwAq;JwqSDergEOkg')
-    #     except:
-    #         return False
-    #     # 获取user 判断session是否正确
-    #     return True
-    # else:
-      return 5
-=======
-from django.http import HttpResponse
 from webapp.models import persons
 import jwt
 
@@ -39,7 +15,6 @@ def header_checker(req):
             return user['person_id']
     else:
         return -1
->>>>>>> d09e173cf20fd0e79c8a0f508b62a8c2eb1f2dba
 
 
 def response(code, message=''):
