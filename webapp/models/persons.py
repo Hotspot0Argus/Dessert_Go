@@ -12,7 +12,7 @@ class Person(models.Model):
 
     class Meta:
         app_label = 'webapp'
-        db_table = 'menu'
+        db_table = 'persons'
 
     @classmethod
     def check_worker_id_and_person_id(cls, person_id, worker_id):
