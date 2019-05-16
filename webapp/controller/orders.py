@@ -6,12 +6,15 @@ import json
 
 
 def create(request):
-    new_order = Order.objects.create()
-    new_order.menu_list = '([],)'
-    new_order.table_id = (-1,)
-    new_order.status = "('ing',)"
-    new_order.save()
-    return response(response_code['OK'], new_order.order_id)
+    user = header_checker(request)
+    if user:
+        new_order = Order.objects.create()
+        new_order.menu_list = '([],)'
+        new_order.table_id = (-1,)
+        new_order.status = "('ing',)"
+        new_order.save()
+        return response(response_code['OK'], new_order.order_id)
+    return response(response_code['BAD_REQUEST'])
 
 
 def get_order(request):
@@ -53,7 +56,7 @@ def finish_order(request):
         status = req.get('status')
         order.status = status,
         order.save()
-        logs.Log.create(order_id, user.worker_id, user.name)
+        logs.Log.create_order(order_id, user.worker_id, user.name)
         return response(response_code['OK'])
     return response(response_code['BAD_REQUEST'])
 

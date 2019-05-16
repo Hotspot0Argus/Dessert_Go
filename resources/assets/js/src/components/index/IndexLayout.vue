@@ -26,7 +26,7 @@
       <slot name="main-content"></slot>
     </div>
 
-    <el-footer class="is-footer" style="min-height: calc(110vh - 720px)">
+    <el-footer class="is-footer" style="min-height: calc(110vh - 520px)">
       <hr style="margin: 0;color: black">
       <el-row type="flex" class="row-bg" justify="center">
         <el-col :span="36">
@@ -123,6 +123,6 @@
   .is-footer {
     background-color: #E8EBF0;
     padding: 0;
-    height: calc(150vh - 200px);
+    height: 150vh;
   }
 </style>

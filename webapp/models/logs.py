@@ -32,3 +32,10 @@ class Log(models.Model):
         log[0].end_time = datetime.datetime.now()
         log[0].save()
         return True
+
+    @classmethod
+    def create_order(cls, order_id, person_id, person_name):
+        new_log = Log.objects.create(order_id=order_id, person_id=person_id, person_name=person_name,
+                                     end_time=datetime.datetime.now())
+        new_log.save()
+        return True
