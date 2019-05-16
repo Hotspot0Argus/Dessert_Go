@@ -123,6 +123,6 @@
   .is-footer {
     background-color: #E8EBF0;
     padding: 0;
-    height: calc(100vh - 200px);
+    height: calc(150vh - 200px);
   }
 </style>

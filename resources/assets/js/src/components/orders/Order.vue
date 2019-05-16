@@ -91,9 +91,9 @@
       <br>
     </div>
     <el-dialog title="结账" :visible.sync="ui.finishOrder">
-      <order-card-content :menuInfo="getOrder"></order-card-content>
+      <order-card-content :menuInfo="menuList"></order-card-content>
       <div slot="footer" class="dialog-footer">
-        <el-button type="primary" @click="innerVisible = true">确定结账共 {{getOrder.total||0}} 元</el-button>
+        <el-button type="primary" @click="finishOrder">确定结账共 {{count()|isPrice}} 元</el-button>
       </div>
     </el-dialog>
   </div>
@@ -138,7 +138,24 @@
       }
     },
     methods: {
-      finishOrder () {
+      async finishOrder () {
+        try {
+          const id = this.$route.params.order_id
+          await this.$api.post('/orders/finish_order', {
+            order_id: id,
+            status: 'finish'
+          })
+          this.$message('入账成功,请打开收款机收款')
+        } catch (e) {
+          this.$message.error('入账失败')
+        }
+      },
+      count () {
+        let total = 0
+        for (const item of this.menuList) {
+          total += parseInt(item.price) * parseInt(item.number)
+        }
+        return total
       },
       addSelectedDessert () {
         if (!this.menuList) {
@@ -178,7 +195,7 @@
           await this.$api.post('/orders/modify_order', {
             order_id: id,
             table_id: this.getOrder.table_id,
-            menu_list: '',
+            menu_list: JSON.stringify(this.menuList),
             status: 'err'
           })
           this.$message('取消成功')

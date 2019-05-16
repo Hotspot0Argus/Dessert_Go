@@ -7,7 +7,7 @@ def create_log(request):
     req = request.POST
     order_id = req.get('order_id')
     worker_id = req.get('worker_id')
-    logs.Log.new_log_create(order_id, worker_id)
+    logs.Log.create(order_id, worker_id)
     return response(response_code['OK'])
 
 

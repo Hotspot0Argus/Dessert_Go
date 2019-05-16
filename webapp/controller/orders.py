@@ -1,6 +1,7 @@
 from webapp.controller.common import header_checker, response, response_code
 from webapp.models.orders import Order
 from django.core import serializers
+from webapp.models import logs
 import json
 
 
@@ -27,28 +28,34 @@ def get_order(request):
 
 def modify_order(request):
     user = header_checker(request)
-    req = request.POST
-    order_id = req.get('order_id')
-    table_id = req.get('table_id')
-    menu_list = req.get('menu_list')
-    status = 'ing'
-    order = Order.find_item(order_id)
-    order.table_id = table_id,
-    order.status = status,
-    order.person_id = user.person_id
-    order.menu_list = menu_list,
-    order.save()
-    return response(response_code['OK'])
+    if user:
+        req = request.POST
+        order_id = req.get('order_id')
+        table_id = req.get('table_id')
+        menu_list = req.get('menu_list')
+        status = req.get('status')
+        order = Order.find_item(order_id)
+        order.table_id = table_id,
+        order.status = status,
+        order.person_id = user.person_id
+        order.menu_list = menu_list,
+        order.save()
+        return response(response_code['OK'])
+    return response(response_code['BAD_REQUEST'])
 
 
 def finish_order(request):
-    req = request.POST
-    order_id = req.get('order_id')
-    total_price = 0
-    order = Order.objects.filter(order_id=order_id)
-    menu_list_dict = json.load(s=order.menu_list)
-    menu_list = menu_list_dict['menu_list']
-    return response(response_code['OK'], total_price)
+    user = header_checker(request)
+    if user:
+        req = request.POST
+        order_id = req.get('order_id')
+        order = Order.find_item(order_id)
+        status = req.get('status')
+        order.status = status,
+        order.save()
+        logs.Log.create(order_id, user.worker_id, user.name)
+        return response(response_code['OK'])
+    return response(response_code['BAD_REQUEST'])
 
 
 def get_orders(request):
