@@ -1,13 +1,12 @@
 from django.conf.urls import include
 from django.urls import path
-from . import views
+
 
 urlpatterns = [
-    path('$', views.index, name='index'),
-
-    # Test api
-    path('test', views.test_api, name='test_api'),
-    path('post', views.post_api, name='post_api'),
-    path('menu/', include('webapp.route.menus'), name='post_api')
+    path('session/',include('webapp.routes.utils'), name='session'),
+    path('orders/', include('webapp.routes.orders'), name='orders'),
+    path('menus/', include('webapp.routes.menus'), name='menus'),
+    path('persons/', include('webapp.routes.persons'), name='persons'),
+    path('logs/', include('webapp.routes.logs'), name='logs')
 ]
 
