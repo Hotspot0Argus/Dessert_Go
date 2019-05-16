@@ -12,8 +12,18 @@ class Person(models.Model):
 
     class Meta:
         app_label = 'webapp'
-        db_table = 'persons'
+        db_table = 'person'
 
     @classmethod
     def check_worker_id_and_person_id(cls, person_id, worker_id):
         return True
+
+    @classmethod
+    def find_by_person_id(cls, person_id):
+        user = Person.objects.get(person_id=person_id)
+        return user
+
+    @classmethod
+    def find_all_person_info(self):
+        users = Person.objects.all()
+        return users
