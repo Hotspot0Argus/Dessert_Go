@@ -1,37 +1,41 @@
 <template>
   <div>
+    <div class=" media-content">
+      <h1 class="">日志</h1>
+      <br>
+      <el-row :gutter="20" class="is-multiple">
+        <el-col :span="24">
+          <log-card :logInfo="logInfo"></log-card>
+        </el-col>
+      </el-row>
+      <br>
+      <br>
+      <br>
+    </div>
   </div>
-
 </template>
 <script>
+  import LogCard from './plugin/LogCard'
 
   export default {
     data () {
       return {
-        tableData: [{
-          date: '2016-05-02',
-          name: '王小虎',
-          address: '上海市普陀区金沙江路 1518 弄',
-          _id: 111
-        }, {
-          date: '2016-05-04',
-          name: '王小虎',
-          address: '上海市普陀区金沙江路 1517 弄'
-        }, {
-          date: '2016-05-01',
-          name: '王小虎',
-          address: '上海市普陀区金沙江路 1519 弄'
-        }, {
-          date: '2016-05-03',
-          name: '王小虎',
-          address: '上海市普陀区金沙江路 1516 弄'
-        }],
+        logInfo: {
+          _id: 111111,
+          startTime: '2019-2-18 15:48',
+          logItems: [{
+            date: '1945-08-15'
+          }]
+        },
         pagination: {
           offset: 0,
           limit: 20,
           total: 3
         }
       }
+    },
+    components: {
+      LogCard
     },
     methods: {}
   }
