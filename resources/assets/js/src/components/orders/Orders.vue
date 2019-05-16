@@ -1,29 +1,16 @@
 <template>
   <div>
     <div class=" media-content">
-      <h1 class="">所有订单</h1>
+      <h1 @click="$router.push({name: 'index'})">所有订单</h1>
+      <br>
+      <div class="is-multiple">
+        <el-button size="small" type="primary" @click="newOrder">新建订单</el-button>
+      </div>
       <br>
       <el-row :gutter="20" class="is-multiple">
         <el-col :span="8">
           <order-card :orderInfo="orderInfo"></order-card>
         </el-col>
-        <el-col :span="8">
-          <order-card :orderInfo="orderInfo"></order-card>
-
-        </el-col>
-        <el-col :span="8">
-          <order-card :orderInfo="orderInfo"></order-card>
-        </el-col>
-        <el-col :span="8">
-          <order-card :orderInfo="orderInfo"></order-card>
-        </el-col>
-        <el-col :span="8">
-          <order-card :orderInfo="orderInfo"></order-card>
-        </el-col>
-        <el-col :span="8">
-          <order-card :orderInfo="orderInfo"></order-card>
-        </el-col>
-
       </el-row>
       <br>
       <br>
@@ -63,6 +50,16 @@
             number: 1,
             price: 3700
           }]
+        }
+      }
+    },
+    asyncComputed: {
+      async getOrders () {
+        try {
+          const orders = await this.$api.get('/orders/get_orders')
+          return orders
+        } catch (e) {
+          return []
         }
       }
     },

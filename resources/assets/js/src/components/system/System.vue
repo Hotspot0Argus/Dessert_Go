@@ -1,12 +1,13 @@
 <template>
   <div class="sys">
-    <h1>System</h1>
+    <h1 @click="$router.push({name: 'index'})">System</h1>
     <el-button type="primary" @click="openDialog">主要按钮</el-button>
   </div>
 </template>
 
 <script>
   export default {
+    inject: ['reload'],
     asyncComputed: {
     },
     methods: {

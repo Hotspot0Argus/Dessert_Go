@@ -4,13 +4,12 @@ const qs = require('qs')
 
 axios.defaults.xsrfCookieName = 'csrftoken'
 axios.defaults.xsrfHeaderName = 'X-CSRFToken'
-
+let token = ''
 axios.interceptors.request.use(
   config => {
     // 这里写死一个token，你需要在这里取到你设置好的token的值
     const token = token
     if (token) {
-      // 这里将token设置到headers中，header的key是Authorization，这个key值根据你的需要进行修改即可
       config.headers.Authorization = token
     }
     return config
@@ -20,11 +19,10 @@ axios.interceptors.request.use(
   })
 
 const host = 'http://localhost:8080/api'
-let token = ''
+
 const $api = {
   async get (url, data) {
     try {
-      data.authrization = token
       let res = await axios.get(host + url, {
         params: data,
         headers: {'Authorization': token}

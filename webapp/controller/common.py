@@ -10,7 +10,7 @@ def header_checker(req):
         user = jwt.decode(session, 'gjwAq;JwqSDergEOkg')
         # 数据库中找 worker_id 和 person_id 对上的话就行
         user_info = persons.Person.find_by_person_id(user['person_id'])
-        if user.worder_id == user_info.worker_id:
+        if user['worker_id'] == user_info.worker_id:
             return user_info
     else:
         return -1

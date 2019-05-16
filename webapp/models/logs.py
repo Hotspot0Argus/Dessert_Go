@@ -8,24 +8,27 @@ class Log(models.Model):
     end_time = models.DateTimeField(null=True, blank=True)
     order_id = models.IntegerField(null=True, blank=True)
     person_id = models.IntegerField(null=True, blank=True)
+    person_name = models.CharField(max_length=50, null=True, blank=True)
 
     class Meta:
         app_label = 'webapp'
         db_table = 'logs'
 
     @classmethod
-    def new_log_create(cls, order_id, person_id):
-        new_log = Log.objects.create(order_id=order_id, person_id=person_id)
+    def create(cls, order_id, person_id, person_name):
+        new_log = Log.objects.create(order_id=order_id, person_id=person_id, person_name=person_name)
         new_log.save()
         return True
 
     @classmethod
-    def find_logs(cls, person_id):
-        logs = Log.objects.filter(person_id=person_id)
-        return logs
+    def find_logs(cls):
+        logs = Log.objects.order_by('start_time')
+        return list(logs)
 
     @classmethod
     def change_log(cls, person_id):
         log = Log.objects.filter(person_id=person_id, order_id=None, end_time=None)
-        log['end_time'] = datetime.datetime.now()
+        log = list(log)
+        log[0].end_time = datetime.datetime.now()
+        log[0].save()
         return True

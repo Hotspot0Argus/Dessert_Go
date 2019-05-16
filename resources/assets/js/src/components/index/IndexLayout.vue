@@ -26,7 +26,7 @@
       <slot name="main-content"></slot>
     </div>
 
-    <el-footer class="is-footer" style="min-height: calc(130vh - 720px)">
+    <el-footer class="is-footer" style="min-height: calc(110vh - 720px)">
       <hr style="margin: 0;color: black">
       <el-row type="flex" class="row-bg" justify="center">
         <el-col :span="36">
@@ -90,23 +90,29 @@
     },
     methods: {
       async login () {
-        const res = await this.$api.post('/session/login', {
-          worker_id: this.loginInfo.workerId,
-          password: this.loginInfo.password
-        })
-        this.$session.set('token', res.token)
-        this.$session.set('user', res.info)
-        this.$api.setToken(res.token)
-        this.workerId = res.info.worker_id
-        this.ui.loginModal = false
+        try {
+          const res = await this.$api.post('/session/login', {
+            worker_id: this.loginInfo.workerId,
+            password: this.loginInfo.password
+          })
+          this.$session.set('token', res.token)
+          this.$session.set('user', res.info)
+          this.$api.setToken(res.token)
+          this.workerId = res.info.worker_id
+          this.ui.loginModal = false
+          this.$message('登录成功')
+        } catch (e) {
+          this.$message('登录失败')
+        }
       },
       async logout () {
         try {
-          // await this.$api.get('/session/logout')
+          await this.$api.post('/session/logout')
           this.$session.clear()
           this.$api.setToken('')
           this.workerId = ''
         } catch (e) {
+          this.$message('退出登录失败')
         }
       }
     }
