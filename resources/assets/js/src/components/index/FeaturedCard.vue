@@ -1,7 +1,7 @@
 <template>
   <div class="is-padding-less">
     <el-card :body-style="{ padding: '0px' }" shadow="never" class="box-card is-padding-less function-menu is-hoverable"
-             @click.native="$router.push({name: routeName})">
+             @click.native="click">
       <div class="title"><i class="fa fa-square fa-fw"
                             :class="{'is-text-danger':routeName==='orders','is-text-warning':routeName==='menus','is-text-info':routeName==='employees','is-text-primary':routeName==='logs','is-text-gain':routeName==='system'}"></i>{{category}}
       </div>
@@ -12,7 +12,25 @@
 
 <script>
   export default {
-    props: ['category', 'routeName', 'detail']
+    props: ['category', 'routeName', 'detail'],
+    computed: {
+      user () {
+        return this.$session.get('user')
+      }
+    },
+    methods: {
+      click () {
+        if (this.user && this.user.person_id > 0) {
+          if (this.routeName === 'orders') {
+            this.$router.push({name: this.routeName})
+          } else if (this.user.position > 1) {
+            this.$router.push({name: this.routeName})
+          }
+          return
+        }
+        this.$message('请登录')
+      }
+    }
   }
 </script>
 
