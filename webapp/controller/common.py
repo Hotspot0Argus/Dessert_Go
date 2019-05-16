@@ -1,5 +1,4 @@
 from django.http import JsonResponse
-from django.http import HttpResponse
 from webapp.models import persons
 import jwt
 

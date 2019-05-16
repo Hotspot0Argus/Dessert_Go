@@ -11,7 +11,7 @@ class Order(models.Model):
     menu_list = models.TextField()
     # finished ing err
     status = models.CharField(max_length=15)
-    worker_id = models.CharField(max_length=20)
+    person_id = models.IntegerField()
 
     class Meta:
         app_label = 'webapp'

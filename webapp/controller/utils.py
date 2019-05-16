@@ -6,6 +6,7 @@ def login(request):
     req = request.POST
     worker_id = req.get('worker_id')
     password = req.get('password')
+
     # 数据库处理
     payload = {
         'worker_id': '201902138',

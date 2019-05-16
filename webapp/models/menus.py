@@ -13,3 +13,23 @@ class Menu(models.Model):
     class Meta:
         app_label = 'webapp'
         db_table = 'menus'
+
+    @classmethod
+    def create_new_item(cls):
+        new_item = Menu.objects.create()
+        return new_item
+
+    @classmethod
+    def find_all_items(cls):
+        items = Menu.objects.all()
+        return items
+
+    @classmethod
+    def find_item(cls, item_id):
+        item = Menu.objects.get(item_id=item_id)
+        return item
+
+    @classmethod
+    def remove_item(cls, item_id):
+        Menu.objects.filter(item_id=item_id).delete()
+        return 1
