@@ -9,16 +9,14 @@ def header_checker(req):
     if session:
         user = jwt.decode(session, 'gjwAq;JwqSDergEOkg')
         # 数据库中找 worker_id 和 person_id 对上的话就行
-        result = persons.Person.check_worker_id_and_person_id(user['person_id'], user['worker_id'])
-        # 获取user 判断session是否正确
-        if result:
-            return user['person_id']
+        user_info = persons.Person.find_by_person_id(user['person_id'])
+        if user.worder_id == user_info.worker_id:
+            return user_info
     else:
         return -1
 
 
 def response(code, message=''):
-    print(message)
     mess = {'status': code, 'data': message}
     return JsonResponse(mess)
 

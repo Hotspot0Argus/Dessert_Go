@@ -2,40 +2,39 @@ from webapp.controller.common import header_checker, response, response_code
 from webapp.models import persons
 
 
-def login(request):
-    return response(response_code['OK'])
+def create(request):
+    user = header_checker(request)
+    if user & user.position > 1:
+        person_id = persons.Person.create()
+        return response(response_code['OK'], person_id)
 
 
 def get_self_info(request):
-    person_id = header_checker(request)
-    req = request.POST
-    user = persons.Person.find_by_person_id(person_id)
+    user = header_checker(request)
     if user:
         return response(response_code['OK'], user)
     return response(response_code['BAD_REQUEST'])
 
 
 def set_self_info(request):
-    person_id = header_checker(request)
-    req = request.POST
-    worker_id = req.get('worker_id')
-    name = req.get('name')
-    address = req.get('address')
-    phone = req.get('phone')
-    user = persons.Person.find_by_person_id(person_id)
-    user.worker_id = worker_id
-    user.name = name
-    user.address = address
-    user.address = phone
-    user.save()
-    return response(response_code['OK'])
+    user = header_checker(request)
+    if user:
+        req = request.POST
+        name = req.get('name')
+        address = req.get('address')
+        phone = req.get('phone')
+        user.name = name
+        user.address = address
+        user.phone = phone
+        user.save()
+        return response(response_code['OK'])
+    return response(response_code['BAD_REQUEST'])
 
 
 def get_all_info(request):
-    person_id = header_checker(request)
+    user = header_checker(request)
     req = request.POST
-    position = req.get('position')
-    if position > 1:
+    if user & user.position > 1:
         users = persons.Person.find_all_person_info()
         return response(response_code['OK'], users)
     else:
@@ -43,15 +42,13 @@ def get_all_info(request):
 
 
 def change_password(request):
-    person_id = header_checker(request)
-    req = request.POST
-    old_password = req.get('old_password')
-    new_password = req.get('new_password')
-    user = persons.Person.find_by_person_id()
-    # (
-    if  user.password == old_password:
-        user.password = new_password
-        user.save()
-        return response(response_code['OK'])
-    else:
-        return response(response_code['BAD_REQUEST'])
+    user = header_checker(request)
+    if user:
+        req = request.POST
+        old_password = req.get('old_password')
+        new_password = req.get('new_password')
+        if user.password == old_password:
+            user.password = new_password
+            user.save()
+            return response(response_code['OK'])
+    return response(response_code['BAD_REQUEST'])
