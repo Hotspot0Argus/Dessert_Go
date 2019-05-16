@@ -7,8 +7,6 @@ import VueSession from 'vue-session'
 import AsyncComputed from 'vue-async-computed'
 import '../../../../theme/index.css'
 import 'font-awesome/scss/font-awesome.scss'
-import FlexTable from './components/common/flex_table/FlexTable.vue'
-import FlexTableColumn from './components/common/flex_table/FlexTableColumn.vue'
 import '../../../../theme/main.css'
 
 Vue.use(ElementUI)
@@ -29,8 +27,6 @@ Vue.filter('isPrice', function (value) {
   const yuan = value / 100.0
   return yuan.toFixed(2)
 })
-Vue.component('flex-table', FlexTable)
-Vue.component('flex-table-column', FlexTableColumn)
 Vue.prototype.$api = $api
 
 Vue.config.productionTip = false

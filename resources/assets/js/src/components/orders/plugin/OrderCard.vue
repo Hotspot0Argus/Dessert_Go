@@ -6,26 +6,8 @@
         <el-button style="float: right; padding: 3px 0" type="text" @click="$router.push({name:'orders:order'})">查看和编辑
         </el-button>
       </div>
-      <el-table
-        :data="orderInfo.menuItems"
-        style="width: 100%">
-        <el-table-column
-          prop="name"
-          label="名称"
-          width="100">
-        </el-table-column>
-        <el-table-column
-          prop="number"
-          label="数量">
-        </el-table-column>
-        <el-table-column
-          label="单价"
-          width="100">
-          <template slot-scope="scope">
-            {{scope.row.price|isPrice}}
-          </template>
-        </el-table-column>
-      </el-table>
+      <order-card-content :orderInfo="orderInfo">
+      </order-card-content>
       <hr>
       <span class="is-text-gain is-text-small">{{orderInfo.startTime}}</span>
       <span class="pull-right">总计:123</span>
@@ -37,8 +19,13 @@
 </template>
 
 <script>
+  import OrderCardContent from './OrderCardContent'
+
   export default {
-    props: ['orderInfo']
+    props: ['orderInfo'],
+    components: {
+      OrderCardContent
+    }
   }
 </script>
 

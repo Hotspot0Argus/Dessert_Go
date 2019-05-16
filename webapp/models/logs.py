@@ -6,10 +6,19 @@ class Log(models.Model):
     start_time = models.DateTimeField(auto_now_add=True)
     end_time = models.DateTimeField(auto_now=True)
     order_id = models.IntegerField(default=0, null=True, blank=True)
-    worker_id = models.CharField(max_length=30)
+    person_id = models.IntegerField()
 
     class Meta:
         app_label = 'webapp'
-        db_table = 'menu'
+        db_table = 'logs'
 
-    #     函数未写
+    @classmethod
+    def new_log_create(cls):
+        new_log = Log.objects.create()
+        new_log.save()
+        return new_log
+
+    @classmethod
+    def find_logs(cls,person_id):
+        logs = Log.objects.filter(person_id=person_id)
+        return logs

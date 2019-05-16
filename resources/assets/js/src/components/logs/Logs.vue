@@ -1,77 +1,32 @@
 <template>
   <div>
-    <pagination v-show="pagination.total" v-bind:key="'pagination'"
-                :pagination="pagination"
-                v-on:pageChange="pageChange"
-                v-on:perPageChange="perPageChange"></pagination>
-    <flex-table
-      :dataset="tableData"
-      height="60vh">
-      <flex-table-column type="selection"></flex-table-column>
-      <flex-table-column
-        prop="name"
-        width="100"
-        align="center">
-        <template slot="header">
-          <a class="problem-name single-line">
-              <span>
-                <i class="fa fa-long-arrow-down fa-fw"></i>姓名</span>
-          </a>
-        </template>
-      </flex-table-column>
-
-      <flex-table-column
-        prop="address"
-        label="住址"
-        align="center"
-        width="150">
-        <template slot="header">
-          <a class="problem-name single-line">
-              <span @click="changeOrder('student_id')">
-                <i class="fa fa-long-arrow-down fa-fw"></i>住址</span>
-          </a>
-        </template>
-      </flex-table-column>
-      <flex-table-column
-        prop="address"
-        label="住址"
-        align="center"
-        width="300">
-        <template slot="header">
-          <a class="problem-name single-line">
-              <span @click="changeOrder('student_id')">
-                <i class="fa fa-long-arrow-down fa-fw"></i>住址</span>
-          </a>
-        </template>
-      </flex-table-column>
-    </flex-table>
+    <div class=" media-content">
+      <h1 class="">日志</h1>
+      <br>
+      <el-row :gutter="20" class="is-multiple">
+        <el-col :span="24">
+          <log-card :logInfo="logInfo"></log-card>
+        </el-col>
+      </el-row>
+      <br>
+      <br>
+      <br>
+    </div>
   </div>
-
 </template>
 <script>
-  import Pagination from '../common/Pagination'
+  import LogCard from './plugin/LogCard'
 
   export default {
     data () {
       return {
-        tableData: [{
-          date: '2016-05-02',
-          name: '王小虎',
-          address: '上海市普陀区金沙江路 1518 弄',
-          _id: 111
-        }, {
-          date: '2016-05-04',
-          name: '王小虎',
-          address: '上海市普陀区金沙江路 1517 弄'
-        }, {
-          date: '2016-05-01',
-          name: '王小虎',
-          address: '上海市普陀区金沙江路 1519 弄'
-        }, {
-          date: '2016-05-03',
-          name: '王小虎',
-          address: '上海市普陀区金沙江路 1516 弄'
-        }],
+        logInfo: {
+          _id: 111111,
+          startTime: '2019-2-18 15:48',
+          logItems: [{
+            date: '1945-08-15'
+          }]
+        },
         pagination: {
           offset: 0,
           limit: 20,
@@ -79,16 +34,10 @@
         }
       }
     },
-    methods: {
-      pageChange (page) {
-        this.pagination.offset = (page - 1) * this.pagination.limit
-      },
-      perPageChange (page) {
-        this.pagination.limit = page
-        this.pagination.offset = 0
-      }
+    components: {
+      LogCard
     },
-    components: {Pagination}
+    methods: {}
   }
 </script>
 

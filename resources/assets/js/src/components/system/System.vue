@@ -1,12 +1,20 @@
 <template>
   <div class="sys">
     <h1>System</h1>
-    <el-button type="primary" @click="$router.push({name: 'orders'})">主要按钮</el-button>
+    <el-button type="primary" @click="openDialog">主要按钮</el-button>
   </div>
 </template>
 
 <script>
-  export default {}
+  export default {
+    asyncComputed: {
+    },
+    methods: {
+      openDialog () {
+        this.$router.push({name: 'orders'})
+      }
+    }
+  }
 
 </script>
 

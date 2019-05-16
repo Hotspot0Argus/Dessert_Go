@@ -5,17 +5,36 @@ const qs = require('qs')
 axios.defaults.xsrfCookieName = 'csrftoken'
 axios.defaults.xsrfHeaderName = 'X-CSRFToken'
 
+axios.interceptors.request.use(
+  config => {
+    // 这里写死一个token，你需要在这里取到你设置好的token的值
+    const token = token
+    if (token) {
+      // 这里将token设置到headers中，header的key是Authorization，这个key值根据你的需要进行修改即可
+      config.headers.Authorization = token
+    }
+    return config
+  },
+  error => {
+    return Promise.reject(error)
+  })
+
 const host = 'http://localhost:8080/api'
+let token = ''
 const $api = {
   async get (url, data) {
     try {
-      let res = await axios.get(host + url, {params: data})
+      data.authrization = token
+      let res = await axios.get(host + url, {
+        params: data,
+        headers: {'Authorization': token}
+      })
       res = res.data
       return new Promise((resolve) => {
-        if (res.code === 0) {
-          resolve(res)
+        if (res.status === 200) {
+          resolve(res.data)
         } else {
-          resolve(res)
+          resolve(res.data)
         }
       })
     } catch (err) {
@@ -27,20 +46,23 @@ const $api = {
       let res = await axios.post(host + url, qs.stringify(data), {
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded',
-          'Session': '123'
+          'Authorization': token
         }
       })
       res = res.data
       return new Promise((resolve, reject) => {
-        if (res.code === 0) {
-          resolve(res)
+        if (res.status === 200) {
+          resolve(res.data)
         } else {
-          reject(res)
+          reject(res.data)
         }
       })
     } catch (err) {
       console.log(err)
     }
+  },
+  setToken (paToken) {
+    token = paToken
   }
 }
 export { $api }

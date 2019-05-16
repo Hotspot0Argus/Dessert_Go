@@ -7,6 +7,7 @@ import Menus from '../components/menus/Menus'
 import Employees from '../components/employees/Employees'
 import Logs from '../components/logs/Logs'
 import System from '../components/system/System'
+import ChangeInfo from '../components/user/ChangeUserInfo'
 
 Vue.use(Router)
 
@@ -16,6 +17,11 @@ export default new Router({
       path: '/',
       name: 'index',
       component: Index
+    },
+    {
+      path: '/user/change_info',
+      name: 'user:change_info',
+      component: ChangeInfo
     },
     {
       path: '/orders',

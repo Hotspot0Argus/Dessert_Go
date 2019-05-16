@@ -7,10 +7,12 @@ class Order(models.Model):
     customer_num = models.IntegerField()
     start_time = models.DateTimeField(auto_now_add=True)
     end_time = models.DateTimeField(auto_now=True)
+    # '{menu_list:[{menu_id,menu_name,menu_price,menu_num}]}'
     menu_list = models.TextField()
+    # finished ing err
     status = models.CharField(max_length=15)
-    worker_id = models.CharField(max_length=20)
+    person_id = models.IntegerField()
 
     class Meta:
         app_label = 'webapp'
-        db_table = 'menu'
+        db_table = 'orders'

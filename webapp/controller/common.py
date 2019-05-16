@@ -1,29 +1,26 @@
 from django.http import JsonResponse
-import json
-from jwt import (
-    JWT,
-    jwk_from_dict,
-    jwk_from_pem,
-)
+from webapp.models import persons
+import jwt
 
 
 def header_checker(req):
-    session = req.META.get("HTTP_SESSION")
+    session = req.META.get("HTTP_AUTHORIZATION")
+    print(req.META)
     if session:
-        jwt = JWT()
-        # token = jwt.encode(payload, 'secret', algorithm='HS256')
-        try:
-            jwt.verify(session, 'gjwAq;JwqSDergEOkg')
-        except:
-            return False
+        user = jwt.decode(session, 'gjwAq;JwqSDergEOkg')
+        # 数据库中找 worker_id 和 person_id 对上的话就行
+        result = persons.Person.check_worker_id_and_person_id(user['person_id'], user['worker_id'])
         # 获取user 判断session是否正确
-        return True
+        if result:
+            return user['person_id']
     else:
-        return False
+        return -1
 
 
-def response(code, message):
-    return JsonResponse({'message': message}, status=code)
+def response(code, message=''):
+    print(message)
+    mess = {'status': code, 'data': message}
+    return JsonResponse(mess)
 
 
 response_code = {'OK': 200,
