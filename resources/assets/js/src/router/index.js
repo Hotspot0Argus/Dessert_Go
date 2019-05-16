@@ -29,7 +29,7 @@ export default new Router({
       component: Orders
     },
     {
-      path: '/orders/order',
+      path: '/orders/:order_id',
       name: 'orders:order',
       component: Order
     },

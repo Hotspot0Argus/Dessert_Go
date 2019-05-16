@@ -41,7 +41,7 @@
     </el-card>
     <br>
     <el-dialog
-      title="添加甜品"
+      title="修改甜品属性"
       :visible.sync="ui.edit"
       width="30%">
       <el-form ref="form" v-model="selectedItem" label-width="80px">

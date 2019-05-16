@@ -8,7 +8,7 @@ class Order(models.Model):
     start_time = models.DateTimeField(auto_now_add=True)
     end_time = models.DateTimeField(auto_now=True)
     # '{menu_list:[{menu_id,menu_name,menu_price,menu_num}]}'
-    menu_list = models.TextField(null=True, blank=True)
+    menu_list = models.CharField(max_length=20000, null=True, blank=True)
     # finished ing err
     status = models.CharField(max_length=15, null=True, blank=True)
     person_id = models.IntegerField(null=True, blank=True)
@@ -16,3 +16,8 @@ class Order(models.Model):
     class Meta:
         app_label = 'webapp'
         db_table = 'orders'
+
+    @classmethod
+    def find_item(cls, order_id):
+        item = Order.objects.get(order_id=order_id)
+        return item

@@ -30,6 +30,13 @@ def get_menus(request):
     return response(response_code['BAD_REQUEST'])
 
 
+def get_menus_on_sell(request):
+    if header_checker(request):
+        items = menus.Menu.find_all_on_sell()
+        return response(response_code['OK'], serializers.serialize('json', items))
+    return response(response_code['BAD_REQUEST'])
+
+
 def get_menu(request):
     if header_checker(request):
         req = request.GET

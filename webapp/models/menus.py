@@ -25,6 +25,12 @@ class Menu(models.Model):
         return items
 
     @classmethod
+    def find_all_on_sell(cls):
+        items = Menu.objects.filter(status=True)
+        items = list(items)
+        return items
+
+    @classmethod
     def find_item(cls, item_id):
         item = Menu.objects.get(item_id=item_id)
         return item

@@ -88,7 +88,7 @@
           return
         }
         try {
-          await this.$api.post('/persons/change_password', {old_password: this.oldPwd, new_pasword: this.newPwd})
+          await this.$api.post('/persons/change_password', {old_password: this.oldPwd, new_password: this.newPwd})
           this.$message({
             message: '修改成功',
             type: 'success'
