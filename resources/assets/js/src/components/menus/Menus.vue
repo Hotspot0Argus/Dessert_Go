@@ -3,7 +3,7 @@
     <div class=" media-content">
       <h1 class="">菜单</h1>
       <div class="is-multiple">
-        <el-button size="small" type="primary">添加菜品</el-button>
+        <el-button size="small" type="primary" @click="ui.addModal=true">添加菜品</el-button>
       </div>
       <br>
       <el-row :gutter="20" class="is-multiple">
@@ -15,6 +15,33 @@
       <br>
       <br>
     </div>
+
+    <el-dialog
+      title="添加菜品"
+      :visible.sync="ui.addModal"
+      width="30%">
+      <el-form ref="form" :model="menuInfo" label-width="80px">
+        <el-form-item label="名称">
+          <el-input></el-input>
+        </el-form-item>
+        <el-form-item label="单价">
+          <el-input></el-input>
+        </el-form-item>
+        <el-form-item label="折扣">
+          <el-input></el-input>
+        </el-form-item>
+        <el-form-item label="在售">
+          <el-switch
+            v-model="sell">
+          </el-switch>
+        </el-form-item>
+      </el-form>
+      <span slot="footer" class="dialog-footer">
+        <el-button @click="ui.addModal=false">取 消</el-button>
+        <el-button type="primary">确 定</el-button>
+     </span>
+    </el-dialog>
+
   </div>
 </template>
 
@@ -24,6 +51,10 @@
   export default {
     data () {
       return {
+        ui: {
+          addModal: false
+        },
+        sell: true,
         menuInfo: {
           _id: 111111,
           startTime: '2019-2-18 15:48',
