@@ -20,7 +20,7 @@
     },
     methods: {
       click () {
-        if (this.user && this.user.person_id > 0) {
+        if (this.user) {
           if (this.routeName === 'orders') {
             this.$router.push({name: this.routeName})
           } else if (this.user.position > 1) {
