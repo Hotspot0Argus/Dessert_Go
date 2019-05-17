@@ -26,6 +26,11 @@ class Log(models.Model):
         return list(logs)
 
     @classmethod
+    def find_log(cls, id):
+        logs = Log.objects.get(order_id=id)
+        return logs
+
+    @classmethod
     def change_log(cls, person_id):
         log = Log.objects.filter(person_id=person_id, order_id=None, end_time=None)
         log = list(log)
