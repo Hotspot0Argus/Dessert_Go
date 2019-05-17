@@ -3,7 +3,7 @@
     <el-card class="box-card">
       <el-table
         :data="menuInfo"
-        style="width: 100%">
+        style="width: 100%" max-height="600">
         <el-table-column
           label="名称"
           min-width="150">
